@@ -1,11 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>카카오톡 공유 테스트</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>카카오톡 공유해보기</h1>
-</body>
+
+    <button onclick="shareKakao()">카카오톡으로 결과 공유하기</button>
+
+    <script
+      src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.0/kakao.min.js"
+      integrity="sha384-l+xbElFSnPZ2rOaPrU//2FF5B4LB8FiX5q4fXYTlfcG4PGpMkE1vcL7kNXI6Cci0"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // 2. SDK 초기화 (작성자님이 하신 부분)
+      Kakao.init("5562d7c6a71bd7c17cd6d9554f313a5c");
+
+      // 3. 버튼을 누르면 실행될 공유 함수
+      function shareKakao() {
+        Kakao.Share.sendDefault({
+          objectType: "feed", // 가장 기본형인 피드 템플릿
+          content: {
+            title: "카카오톡 공유 테스트",
+            description: "카카오톡 공유 테스트 해봄",
+            imageUrl:
+              "https://mud-kage.kakao.com/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg", // 테스트용 임시 이미지 (나중에 변경 가능)
+            link: {
+              // 공유된 카톡 메시지를 눌렀을 때 이동할 주소
+              mobileWebUrl: "https://kakao-share-test.pages.dev",
+              webUrl: "https://kakao-share-test.pages.dev",
+            },
+          },
+          buttons: [
+            {
+              title: "들어가보슈",
+              link: {
+                mobileWebUrl: "https://kakao-share-test.pages.dev",
+                webUrl: "https://kakao-share-test.pages.dev",
+              },
+            },
+          ],
+        });
+      }
+    </script>
+  </body>
 </html>
